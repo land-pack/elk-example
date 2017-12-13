@@ -1,0 +1,21 @@
+>> sample data
+
+[17-12-13 11:13:50][Thread-21][ews.py:796] DEBUG: [RESPONSE] PATH=/simple/user/info/new|params={'ck': u'MTAwMzMyN2E1MmQ2ODU1MTU4NzA5NDUxM2M5NTk0NjczM2VhZDMy', u'vcode': u'56fe5a0b99c073faddb932882b238691', u'platform': u'ios', u'version': u'1.2.1', u'idfa': u'', u'deviceid': u'36431572ab55b0596fec00c1ea67c061cdaf549e', u'channel': u'windows'}|resp={'uid': '1003327', 'photo': '', 'idcard': '', 'user_type': 'guest', 'agent_status': '-1', 'switcher': {'vguessActivity': '0', 'vipSwitcher': '0', 'vguessEnable': '1', 'qihu_switcher': '0', 'chatSwitcher': '1'}, 'vip': '0', 'prize_info': [], 'wheellevel': '0', 'notify_prizes': '4', 'exchangetkt_total': '3888', 'magic_number': '1', 'welfare_pop': '0', 'username': '\xe6\xb8\xb8\xe5\xae\xa2_2867686', 'realname': '', 'bonus': '0', 'backpack_red': '0', 'diamond_total': '240', 'broadcast': [], 'gold_total': '45173351', 'achievement': {'prize': '0', 'rank': '101'}, 'mask_switcher': '1', 'mobile': '', 'vip_upgrade': '0', 'ismyself': '1', 'newprize': '0', 'notify': '0'}
+
+>> Grok Pattern
+
+\[%{DATA:date}\]\[%{DATA:thread}\]\[%{DATA:file}\] %{DATA:level}\[%{DATA:where}\] PATH=%{DATA:api}\|params=%{DATA:params}\|resp=%{GREEDYDATA:resp}
+
+
+Custom Patterns
+
+{
+  "date": "17-12-13 11:13:50",
+  "file": "ews.py:796",
+  "level": "DEBUG: ",
+  "resp": "{'uid': '1003327', 'photo': '', 'idcard': '', 'user_type': 'guest', 'agent_status': '-1', 'switcher': {'vguessActivity': '0', 'vipSwitcher': '0', 'vguessEnable': '1', 'qihu_switcher': '0', 'chatSwitcher': '1'}, 'vip': '0', 'prize_info': [], 'wheellevel': '0', 'notify_prizes': '4', 'exchangetkt_total': '3888', 'magic_number': '1', 'welfare_pop': '0', 'username': '\\xe6\\xb8\\xb8\\xe5\\xae\\xa2_2867686', 'realname': '', 'bonus': '0', 'backpack_red': '0', 'diamond_total': '240', 'broadcast': [], 'gold_total': '45173351', 'achievement': {'prize': '0', 'rank': '101'}, 'mask_switcher': '1', 'mobile': '', 'vip_upgrade': '0', 'ismyself': '1', 'newprize': '0', 'notify': '0'}",
+  "where": "RESPONSE",
+  "thread": "Thread-21",
+  "api": "/simple/user/info/new",
+  "params": "{'ck': u'MTAwMzMyN2E1MmQ2ODU1MTU4NzA5NDUxM2M5NTk0NjczM2VhZDMy', u'vcode': u'56fe5a0b99c073faddb932882b238691', u'platform': u'ios', u'version': u'1.2.1', u'idfa': u'', u'deviceid': u'36431572ab55b0596fec00c1ea67c061cdaf549e', u'channel': u'windows'}"
+}

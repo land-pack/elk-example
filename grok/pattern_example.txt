@@ -59,4 +59,20 @@ hello world 2017-04-05T08:08:06.876675+00:00 level 2
   "second": "world",
   "timestamp": "2017-04-05T08:08:06.876675+00:00"
 }
+# ========EMAILADDRESS=====================
+
+
+>> Sample Data
+hello abc@gmail.com 192.0.0.1
+
+>> Grok Pattern
+%{DATA:greet} %{EMAILADDRESS:email} %{IP:ip}
+
+>> Custom Patterns
+
+{
+  "ip": "192.0.0.1",
+  "greet": "hello",
+  "email": "abc@gmail.com"
+}
 # =============================
