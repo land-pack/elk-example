@@ -1,0 +1,127 @@
+PUT /ecommerce
+{}
+
+GET /_cat/indices?v
+
+DELETE /ecommerce
+
+PUT /ecommerce
+{
+  "mappings": {
+    "product":{
+      "properties": {
+        "name":{
+          "type": "text"
+        },
+        "price":{
+          "type":"double"
+        },
+        "description":{
+          "type":"text"
+        },
+        "status":{
+          "type": "text"
+        },
+        "quantity":{
+          "type":"text"
+        },
+        "categories":{
+          "type":"nested",
+          "properties": {
+            "name":{
+              "type":"text"
+            }
+          }
+        },
+        "tags":{
+          "type": "text"
+        }
+      }
+    }
+  }
+}
+
+PUT /ecommerce/product/1001
+{
+  "name":"Zend Framework 2: from Beginner to Professional",
+  "price": 40.00,
+  "description":"Learn Zend Framwork 2 in just a few hourse!",
+  "status":"active",
+  "quantity":1,
+  "categories":[
+    {"name":"Software"}
+    ],
+  "tags":["zend framework", "zf2", "php", "programming"]
+}
+
+POST /ecommerce/product/1001/_update
+{
+  "doc":{
+    "price": 50.00
+  }
+}
+
+DELETE /ecommerce/product/1001
+
+
+
+
+
+
+
+POST /ecommerce/product/_bulk
+{"index":{"_id":"1002"}}
+{"name":"hello ak","price": 110.00,"description":"ak is good for beginner","status":"active","quantity":1,"categories":[{"name":"Software"}],"tags":["python", "zf2", "ak", "programming"]}
+{"index":{"_id":"1003"}}
+{"name":"hello world","price": 210.00,"description":"hello world is good for beginner","status":"active","quantity":1,"categories":[{"name":"Software"}],"tags":["python", "zf2", "php", "programming"]}
+
+
+
+GET /ecommerce/product/1
+
+
+
+POST /index/type/_bulk
+POST /index/_bulk
+POST /_bulk
+
+POST /_bulk
+{"update":{"_id":"1002","_index":"ecommerce","_type":"product"}}
+{"doc":{"quantity":10}}
+
+
+
+GET ecommerce/product/_search?q=ak
+
+GET ecommerce/product/_search
+{
+  "query":{
+    "match": {
+      "name": "ak"
+    }
+  }
+}
+
+GET ecommerce/product/_search?q=*
+
+GET ecommerce/product/_search?q=name:ak
+
+GET ecommerce/product/_search?q=name:(ak AND hello)
+
+GET ecommerce/product/_search?q=name:(ak or hello)
+
+
+GET ecommerce/product/_search?q=(name:(ak or hello) AND price:210)
+
+
+GET ecommerce/product/_search?q=name:+hello -ak
+
+
+
+
+GET ecommerce/product/_search?q=name:"hello   ak"
+
+
+GET /_analyze?analyzer=standard&text=hell
+
+get /
