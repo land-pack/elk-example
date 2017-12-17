@@ -1,0 +1,13 @@
+PUT ecommerce/_mapping/product
+{
+  "properties": {
+    "name": { 
+      "type":     "text",
+      "fielddata": true
+    },
+    "tags": { 
+      "type":     "text",
+      "fielddata": true
+    }
+  }
+}
