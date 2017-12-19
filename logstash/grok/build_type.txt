@@ -1,0 +1,14 @@
+May 29 16:37:11 sadness logger: hello world
+
+
+%{SYSLOGBASE} %{GREEDYDATA:message}
+
+
+{
+  "program": "logger",
+  "logsource": "sadness",
+  "message": "hello world",
+  "timestamp": "May 29 16:37:11"
+}
+
+
