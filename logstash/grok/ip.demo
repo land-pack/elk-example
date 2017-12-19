@@ -1,0 +1,11 @@
+hello abc@gmail.com 192.0.0.1
+
+
+%{DATA:greet} %{EMAILADDRESS:email} %{IP:ip}
+
+
+{
+  "ip": "192.0.0.1",
+  "greet": "hello",
+  "email": "abc@gmail.com"
+}
